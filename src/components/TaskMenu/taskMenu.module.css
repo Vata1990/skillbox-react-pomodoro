@@ -1,0 +1,47 @@
+.button {
+  border: none;
+  background-color: transparent;
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+.header {
+  margin-bottom: 25px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 17px;
+  color: #333333;
+}
+
+.delete {
+  margin-bottom: 10px;
+  width: 162px;
+  height: 55px;
+  border: none;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+
+  color: #ffffff;
+  background: #dc3e22;
+}
+
+.delete:hover {
+  background: #861f0d;
+}
+
+.cancel {
+  border: none;
+  text-decoration: underline;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+  color: #333333;
+  background: none;
+}

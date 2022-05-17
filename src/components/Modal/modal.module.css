@@ -1,0 +1,43 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  position: relative;
+  min-width: 200px;
+  min-height: 200px;
+
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  height: 30px;
+}
+
+.close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  border: none;
+  background: none;
+}
+
+.body {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

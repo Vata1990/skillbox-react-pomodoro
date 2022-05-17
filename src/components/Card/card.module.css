@@ -1,0 +1,48 @@
+.container {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* width: 405px; */
+  height: 180px;
+}
+
+.yellow {
+  background-color: #ffdda9;
+}
+
+.purple {
+  background-color: #dfdcfe;
+}
+
+.blue {
+  background-color: #c5f1ff;
+}
+
+.grey {
+  background-color: #f4f4f4;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  color: #333333;
+}
+
+.value {
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 76px;
+  color: #333333;
+}
+
+.icon {
+  width: 130px;
+  height: 130px;
+}
+
+.grey .icon path {
+  stroke: #c4c4c4;
+}

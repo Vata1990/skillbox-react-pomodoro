@@ -1,0 +1,27 @@
+.container {
+  margin-bottom: 32px;
+  padding: 25px;
+  width: 300px;
+  height: 260px;
+  background-color: #f4f4f4;
+}
+
+.header {
+  margin-bottom: 14px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  color: #333333;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #333333;
+}
+
+.minutes {
+  font-weight: 700;
+  color: #dc3e22;
+}

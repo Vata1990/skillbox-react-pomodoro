@@ -1,0 +1,41 @@
+.container {
+  text-align: center;
+}
+
+.inline {
+  margin-right: 25px;
+  width: 145px;
+  height: 55px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  color: #ffffff;
+  background: #a8b64f;
+  border: none;
+}
+
+.inline:hover {
+  background-color: #899441;
+}
+
+.outline {
+  width: 138px;
+  height: 55px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  color: #dc3e22;
+  border: 2px solid #dc3e22;
+}
+
+.outline:hover {
+  color: #ffffff;
+  background-color: #dc3e22;
+}
+
+.outline:disabled {
+  color: #c4c4c4;
+  border-color: #c4c4c4;
+}

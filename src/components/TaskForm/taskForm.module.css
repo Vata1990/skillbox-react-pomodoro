@@ -1,0 +1,43 @@
+.form {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 15px;
+  width: 370px;
+  height: 55px;
+
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+  color: #999999;
+  background: #f4f4f4;
+  border: none;
+}
+
+.label {
+  display: none;
+}
+
+.button {
+  width: 173px;
+  height: 55px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 17px;
+  color: #ffffff;
+  background: #a8b64f;
+  border: none;
+}
+
+.button:hover {
+  background-color: #899441;
+}
+
+.error {
+  margin-bottom: 25px;
+  color: red;
+}

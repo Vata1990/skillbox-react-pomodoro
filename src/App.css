@@ -1,39 +1,88 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 100;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-thin.woff') format('woff');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 200;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-ultralight.woff') format('woff');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 300;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-light.woff') format('woff');
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-light.woff') format('woff');
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 500;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-medium.woff') format('woff');
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 600;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-semibold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 900;
+  src: local('SF UI Display'),
+    url('./fonts/sf-ui-display-heavy.woff') format('woff');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: 'SF UI Display';
+}
+
+body {
+  font-family: 'SF UI Display';
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
 }

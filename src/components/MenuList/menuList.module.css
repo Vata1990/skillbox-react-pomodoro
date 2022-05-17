@@ -1,0 +1,50 @@
+.listContainer {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+}
+
+.list {
+  margin-top: 10px;
+  width: 165px;
+  transform: translateX(-50%);
+
+  border: 1px solid #c4c4c4;
+
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 17px;
+  color: #999999;
+  background-color: #fff;
+}
+
+.listContainer::before {
+  margin-top: 5px;
+  position: absolute;
+  z-index: 10;
+  content: '';
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%) rotate(45deg);
+  border-left: 1px solid #c4c4c4;
+  border-top: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #f4f4f4;
+}
+
+.icon {
+  margin-right: 10px;
+  width: 15px;
+  height: 15px;
+}
