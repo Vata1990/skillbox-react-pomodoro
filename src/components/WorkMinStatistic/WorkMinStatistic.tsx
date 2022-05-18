@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { IWeekStatistic } from '../../services/stat-service';
-import styles from './timeStat.module.css';
+import { IWeekStatistic } from '../../models/statistic';
+import styles from './workMinStatistic.module.css';
 
 type IProps = { weekStatistic: IWeekStatistic };
 
-const TimeStat: FC<IProps> = ({ weekStatistic }) => {
+const WorkMinStatistic: FC<IProps> = ({ weekStatistic }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.header}>{weekStatistic.dayLabel}</h3>
@@ -25,4 +25,4 @@ const TimeStat: FC<IProps> = ({ weekStatistic }) => {
   );
 };
 
-export default TimeStat;
+export default WorkMinStatistic;

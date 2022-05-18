@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from '../Col';
 import { Instruction } from '../Instruction';
 import { Row } from '../Row';
-import { TaskForm } from '../TaskForm';
+import TaskFormContainer from '../TaskFormContainer/TaskFormContainer';
 import { TaskList } from '../TaskList';
 import { TimerBlock } from '../TimerBlock';
 
@@ -11,7 +11,7 @@ export const TasksPage: React.FC = () => {
     <Row>
       <Col>
         <Instruction />
-        <TaskForm />
+        <TaskFormContainer />
         <TaskList />
       </Col>
       <Col>

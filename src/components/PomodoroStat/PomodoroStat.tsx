@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styles from './pomodoroStat.module.css';
-import { ReactComponent as Pomodoro } from '../../icons/tomato.svg';
-import { ReactComponent as PomodoroEmpty } from '../../icons/tomato 2.svg';
-import { IWeekStatistic } from '../../services/stat-service';
+import { ReactComponent as PomodoroIcon } from '../../icons/tomato.svg';
+import { ReactComponent as BigPomodoroIcon } from '../../icons/tomato 2.svg';
+import { IWeekStatistic } from '../../models/statistic';
 
 type IProps = {
   weekStatistic: IWeekStatistic;
@@ -14,7 +14,7 @@ const PomodoroStat: FC<IProps> = ({ weekStatistic }) => {
       {weekStatistic.dayStatistic ? (
         <>
           <div className={styles.tomatoBlock}>
-            <Pomodoro className={styles.tomato} />
+            <PomodoroIcon className={styles.tomato} />
             <span className={styles.description}>
               {' '}
               * {weekStatistic.dayStatistic?.tomatos}
@@ -26,7 +26,7 @@ const PomodoroStat: FC<IProps> = ({ weekStatistic }) => {
         </>
       ) : (
         <div className={styles.tomatoBlock}>
-          <PomodoroEmpty />
+          <BigPomodoroIcon />
         </div>
       )}
     </div>

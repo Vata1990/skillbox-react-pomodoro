@@ -1,5 +1,5 @@
 import React, { FC, useRef } from 'react';
-import styles from './statDiagram.module.css';
+import styles from './statisticDiagram.module.css';
 import {
   BarChart,
   Bar,
@@ -9,14 +9,14 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from 'recharts';
-import { IWeekStatistic } from '../../services/stat-service';
+import { IWeekStatistic } from '../../models/statistic';
 
 type IProps = {
   data: IWeekStatistic[];
   setActiveBar?: (index: number) => void;
 };
 
-const StatDiagram: FC<IProps> = ({ data, setActiveBar }) => {
+const StatisticDiagram: FC<IProps> = ({ data, setActiveBar }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const clickHandler = (_: any, index: number): void => {
@@ -43,4 +43,4 @@ const StatDiagram: FC<IProps> = ({ data, setActiveBar }) => {
   );
 };
 
-export default StatDiagram;
+export default StatisticDiagram;

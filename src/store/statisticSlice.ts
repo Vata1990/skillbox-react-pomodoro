@@ -1,15 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import statService from '../services/stat-service';
+import { IStatistic } from '../models/statistic';
+import statisticService from '../services/statistic-service';
 import { AppThunk } from './store';
-
-export interface IStatistic {
-  date: string;
-  workTime: number;
-  pauseTime: number;
-  stops: number;
-  tomatos: number;
-}
-
 interface IStatisticState {
   stats: IStatistic[];
   currentStat: IStatistic;
@@ -40,14 +32,14 @@ export const { setStatistic, setCurrentStatistic } = statisticSlice.actions;
 export default statisticSlice.reducer;
 
 export const fetchStatistic = (): AppThunk => (dispatch, getState) => {
-  const stats = statService.getStatistic();
+  const stats = statisticService.getStatistic();
   dispatch(setStatistic(stats));
 };
 
 export const fetchCurrentStatistic = (): AppThunk => (dispatch, getState) => {
-  let stats = statService.getCurrentStatistic();
+  let stats = statisticService.getCurrentStatistic();
   if (!stats) {
-    stats = statService.createStatistic();
+    stats = statisticService.createStatistic();
   }
   dispatch(setCurrentStatistic(stats));
 };
@@ -59,7 +51,7 @@ export const addWorkTime = (): AppThunk => (dispatch, getState) => {
     workTime: currentStat.workTime + 1,
   };
   dispatch(setCurrentStatistic(newStat));
-  statService.updateStatistic(newStat);
+  statisticService.updateStatistic(newStat);
 };
 
 export const addPause = (): AppThunk => (dispatch, getState) => {
@@ -69,14 +61,14 @@ export const addPause = (): AppThunk => (dispatch, getState) => {
     pauseTime: currentStat.pauseTime + 1,
   };
   dispatch(setCurrentStatistic(newStat));
-  statService.updateStatistic(newStat);
+  statisticService.updateStatistic(newStat);
 };
 
 export const addStop = (): AppThunk => (dispatch, getState) => {
   const { currentStat } = getState().statistic;
   const newStat: IStatistic = { ...currentStat, stops: currentStat.stops + 1 };
   dispatch(setCurrentStatistic(newStat));
-  statService.updateStatistic(newStat);
+  statisticService.updateStatistic(newStat);
 };
 
 export const addTomatos = (): AppThunk => (dispatch, getState) => {
@@ -86,5 +78,5 @@ export const addTomatos = (): AppThunk => (dispatch, getState) => {
     tomatos: currentStat.tomatos + 1,
   };
   dispatch(setCurrentStatistic(newStat));
-  statService.updateStatistic(newStat);
+  statisticService.updateStatistic(newStat);
 };

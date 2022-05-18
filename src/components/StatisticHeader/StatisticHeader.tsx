@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import styles from './statHeader.module.css';
+import styles from './statisticHeader.module.css';
 
 type IProps = { setWeekNumber: (number: number) => void };
 
-const StatHeader: FC<IProps> = ({ setWeekNumber }) => {
+const StatisticHeader: FC<IProps> = ({ setWeekNumber }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>Ваша активность</h2>
@@ -23,4 +23,4 @@ const StatHeader: FC<IProps> = ({ setWeekNumber }) => {
   );
 };
 
-export default StatHeader;
+export default StatisticHeader;

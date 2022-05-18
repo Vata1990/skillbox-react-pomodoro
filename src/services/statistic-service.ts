@@ -1,12 +1,6 @@
-import { IStatistic } from '../store/statisticSlice';
+import { IStatistic, IWeekStatistic } from '../models/statistic';
 
-export interface IWeekStatistic {
-  dayLabel: string;
-  dayShortLabel: string;
-  dayStatistic: IStatistic | null;
-}
-
-class StatService {
+class StatisticService {
   private key = 'statistic';
 
   getStatistic(): IStatistic[] {
@@ -122,4 +116,4 @@ class StatService {
   }
 }
 
-export default new StatService();
+export default new StatisticService();

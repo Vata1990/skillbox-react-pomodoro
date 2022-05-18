@@ -1,44 +1,15 @@
-import React, {
-  ChangeEvent,
-  EventHandler,
-  FC,
-  FormEvent,
-  useState,
-} from 'react';
-import { useAppDispatch } from '../../hooks/redux-hooks';
-import { addTask } from '../../store/taskSlice';
+import React, { ChangeEvent, FC, FormEvent } from 'react';
+
 import styles from './taskForm.module.css';
 
-type IProps = {};
+type IProps = {
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  error: string | null;
+  title: string;
+};
 
-const TaskForm: FC<IProps> = () => {
-  const [title, setTitle] = useState<string>('');
-  const dispatch = useAppDispatch();
-  const [error, setError] = useState<string | null>(null);
-
-  const handleChange: EventHandler<ChangeEvent<HTMLInputElement>> = (event) => {
-    setTitle(event.target.value);
-  };
-
-  const validate = (value: string) => {
-    if (value.length >= 3) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const handleSubmit: EventHandler<FormEvent<HTMLFormElement>> = (event) => {
-    event.preventDefault();
-
-    if (validate(title)) {
-      dispatch(addTask(title));
-      setTitle('');
-      setError(null);
-    } else {
-      setError('Название должно состоять минимум из 3 букв!');
-    }
-  };
-
+const TaskForm: FC<IProps> = ({ error, title, handleChange, handleSubmit }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <input

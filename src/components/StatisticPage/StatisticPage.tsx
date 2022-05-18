@@ -3,16 +3,15 @@ import { Card } from '../Card';
 import { Col } from '../Col';
 import { PomodoroStat } from '../PomodoroStat';
 import { Row } from '../Row';
-import { TimeStat } from '../TimeStat';
-// import styles from './statisticPage.module.css';
 import { ReactComponent as FocusIcon } from '../../icons/focus-stat.svg';
 import { ReactComponent as PauseIcon } from '../../icons/pause-stat.svg';
 import { ReactComponent as StopIcon } from '../../icons/stop-stat.svg';
-import { StatHeader } from '../StatHeader';
-import { StatDiagram } from '../StatDiagram';
+import { StatisticHeader } from '../StatisticHeader';
+import { StatisticDiagram } from '../StatisticDiagram';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { fetchStatistic } from '../../store/statisticSlice';
-import statService from '../../services/stat-service';
+import statisticService from '../../services/statistic-service';
+import { WorkMinStatistic } from '../WorkMinStatistic';
 
 export const StatisticPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -26,22 +25,25 @@ export const StatisticPage: React.FC = () => {
     dispatch(fetchStatistic());
   }, [dispatch]);
 
-  const weekStatistic = statService.prepareWeekStatistic(stats, weekNumber);
+  const weekStatistic = statisticService.prepareWeekStatistic(
+    stats,
+    weekNumber
+  );
 
   const activeStatistic = weekStatistic[activeStatisticIndex];
 
   return (
     <div>
       <Row marginBottom='32px'>
-        <StatHeader setWeekNumber={setWeekNumber} />
+        <StatisticHeader setWeekNumber={setWeekNumber} />
       </Row>
       <Row marginBottom='32px'>
         <Col flexGrow={0} marginRight='32px'>
-          <TimeStat weekStatistic={activeStatistic} />
+          <WorkMinStatistic weekStatistic={activeStatistic} />
           <PomodoroStat weekStatistic={activeStatistic} />
         </Col>
         <Col>
-          <StatDiagram
+          <StatisticDiagram
             data={weekStatistic}
             setActiveBar={setActiveStatisticIndex}
           />
