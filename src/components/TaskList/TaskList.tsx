@@ -1,20 +1,6 @@
-import React, {
-  EventHandler,
-  FC,
-  FocusEvent,
-  KeyboardEvent,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
-import {
-  editTaskId,
-  fetchTasks,
-  saveTasks,
-  updateTaskName,
-} from '../../store/taskSlice';
-import { TaskMenu } from '../TaskMenu';
+import { fetchTasks, saveTasks } from '../../store/taskSlice';
 import styles from './taskList.module.css';
 import {
   DragDropContext,
@@ -24,19 +10,18 @@ import {
   DroppableProvided,
   OnDragEndResponder,
 } from 'react-beautiful-dnd';
-import { ReactComponent as DragIcon } from '../../icons/drag.svg';
-import classnames from 'classnames';
+
 import taskService from '../../services/task-service';
 import { ITask } from '../../models/task';
 import timerService from '../../services/timer-service';
 import { defaultWorkTime } from '../../store/timerSlice';
+import TaskItem from '../TaskItem/TaskItem';
 
 type IProps = {};
 
 const TaskList: FC<IProps> = () => {
-  const { tasks, edittedTaskId } = useAppSelector((state) => state.task);
+  const { tasks } = useAppSelector((state) => state.task);
   const dispatch = useAppDispatch();
-  const ref = useRef<HTMLInputElement>(null);
 
   const activeTask = useMemo<ITask | null>(() => {
     return taskService.getActiveTask(tasks);
@@ -45,12 +30,6 @@ const TaskList: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
-
-  useEffect(() => {
-    if (edittedTaskId && ref.current) {
-      ref.current.focus();
-    }
-  }, [edittedTaskId]);
 
   const summaryTime = useMemo(() => {
     const summary = tasks.reduce((summary, current) => {
@@ -65,27 +44,6 @@ const TaskList: FC<IProps> = () => {
   if (!tasks.length) {
     return null;
   }
-
-  const handlePress: EventHandler<KeyboardEvent<HTMLInputElement>> = (
-    event
-  ) => {
-    switch (event.key) {
-      case 'Enter':
-        dispatch(updateTaskName(event.currentTarget.value));
-        break;
-
-      case 'Escape':
-        dispatch(editTaskId(null));
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const handleBlur = (event: FocusEvent<HTMLInputElement>): void => {
-    dispatch(updateTaskName(event.target.value));
-  };
 
   const handleDrag: OnDragEndResponder = (result) => {
     if (result.destination) {
@@ -110,40 +68,11 @@ const TaskList: FC<IProps> = () => {
               {tasks.map((task, index) => (
                 <Draggable key={task.id} draggableId={task.id} index={index}>
                   {(provided: DraggableProvided) => (
-                    <li
-                      className={classnames(
-                        styles.item,
-                        { [styles.active]: task.id === activeTask?.id },
-                        {
-                          [styles.done]:
-                            task.pomodoroCount <= task.finishedCount,
-                        }
-                      )}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                    >
-                      <span
-                        className={styles.drag}
-                        {...provided.dragHandleProps}
-                      >
-                        <DragIcon />
-                      </span>
-                      <span className={styles.complexity}>
-                        {task.pomodoroCount}
-                      </span>
-                      {edittedTaskId === task.id ? (
-                        <input
-                          className={styles.input}
-                          defaultValue={task.title}
-                          onKeyDown={handlePress}
-                          onBlur={handleBlur}
-                          ref={ref}
-                        />
-                      ) : (
-                        <span className={styles.task}>{task.title}</span>
-                      )}
-                      <TaskMenu taskId={task.id} />
-                    </li>
+                    <TaskItem
+                      activeTask={activeTask}
+                      provided={provided}
+                      task={task}
+                    />
                   )}
                 </Draggable>
               ))}
