@@ -1,16 +1,19 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { TimerButtons } from '../TimerButtons';
 import { TimerHeader } from '../TimerHeader';
 import styles from './timerBlock.module.scss';
 import { Timer } from '../Timer';
 import { useAppSelector } from '../../hooks/redux-hooks';
 import taskService from '../../services/task-service';
+import { CSSTransition } from 'react-transition-group';
+import { ITask } from '../../models/task';
 
 type IProps = {};
 
 const TimerBlock: FC<IProps> = () => {
   const { tasks } = useAppSelector((state) => state.task);
   const { stage, status, value } = useAppSelector((state) => state.timer);
+  const [visible, setVisible] = useState(true);
 
   const activeTask = useMemo(() => {
     return taskService.getActiveTask(tasks);
@@ -20,14 +23,22 @@ const TimerBlock: FC<IProps> = () => {
     <div>
       <TimerHeader activeTask={activeTask} stage={stage} />
       <div className={styles.body}>
-        {activeTask ? (
-          <>
-            <Timer status={status} activeTask={activeTask} value={value} />
+        <CSSTransition
+          in={!!activeTask}
+          timeout={1000}
+          classNames={{ ...styles }}
+          unmountOnExit
+        >
+          <div>
+            <Timer
+              status={status}
+              activeTask={activeTask || ({} as ITask)}
+              value={value}
+            />
             <TimerButtons stage={stage} status={status} />
-          </>
-        ) : (
-          <h2>No tasks yet</h2>
-        )}
+          </div>
+        </CSSTransition>
+        {!activeTask && <h2>No tasks yet</h2>}
       </div>
     </div>
   );

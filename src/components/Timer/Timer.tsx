@@ -41,10 +41,7 @@ const Timer: FC<IProps> = ({ status, activeTask, value }) => {
         <CSSTransition
           key={stringValue}
           timeout={500}
-          classNames={{
-            enter: styles.enter,
-            exit: styles.exit,
-          }}
+          classNames={{ ...styles }}
         >
           <div className={styles.container}>
             <div className={styles.value}>{stringValue}</div>

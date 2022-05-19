@@ -17,8 +17,8 @@ export interface ITimerState {
   stage: TimerStage;
 }
 
-export const defaultWorkTime: number = 80;
-export const defaultPauseTime: number = 70;
+export const defaultWorkTime: number = 2;
+export const defaultPauseTime: number = 2;
 
 const initialState: ITimerState = {
   value: defaultWorkTime,
