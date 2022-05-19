@@ -19,3 +19,41 @@
 .task {
   color: #333333;
 }
+
+.enter {
+  animation: enter 0.5s;
+}
+
+.exit {
+  animation: exit 0.5s;
+}
+
+@keyframes enter {
+  0% {
+    transform: translateX(0%) rotateY(180deg);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(-30%) rotateY(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0%) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes exit {
+  0% {
+    transform: translateX(0%) rotateY(0deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(30%) rotateY(-90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0%) rotateY(-180deg);
+    opacity: 0;
+  }
+}

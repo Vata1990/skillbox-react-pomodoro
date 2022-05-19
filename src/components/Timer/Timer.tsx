@@ -4,6 +4,7 @@ import { ITask } from '../../models/task';
 import timerService from '../../services/timer-service';
 import { fetchCurrentStatistic } from '../../store/statisticSlice';
 import { tick, TimerStatus } from '../../store/timerSlice';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import styles from './timer.module.css';
 
 type IProps = {
@@ -36,7 +37,20 @@ const Timer: FC<IProps> = ({ status, activeTask, value }) => {
 
   return (
     <>
-      <div className={styles.value}>{stringValue}</div>
+      <SwitchTransition mode='out-in'>
+        <CSSTransition
+          key={stringValue}
+          timeout={500}
+          classNames={{
+            enter: styles.enter,
+            exit: styles.exit,
+          }}
+        >
+          <div className={styles.container}>
+            <div className={styles.value}>{stringValue}</div>
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
       <div className={styles.description}>
         Задача 1 -<span className={styles.task}> {activeTask.title}</span>
       </div>

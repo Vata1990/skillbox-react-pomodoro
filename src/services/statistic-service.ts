@@ -23,7 +23,6 @@ class StatisticService {
     } else {
       statistic.push(currentStatistic);
     }
-    console.log(statistic);
 
     localStorage.setItem(this.key, JSON.stringify(statistic));
   }

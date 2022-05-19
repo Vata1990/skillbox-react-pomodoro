@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from 'react';
+import React, { FC, useEffect, useMemo, useRef } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { fetchTasks, saveTasks } from '../../store/taskSlice';
 import styles from './taskList.module.css';
@@ -10,18 +10,19 @@ import {
   DroppableProvided,
   OnDragEndResponder,
 } from 'react-beautiful-dnd';
-
 import taskService from '../../services/task-service';
 import { ITask } from '../../models/task';
 import timerService from '../../services/timer-service';
 import { defaultWorkTime } from '../../store/timerSlice';
-import TaskItem from '../TaskItem/TaskItem';
+import { TaskItem } from '../TaskItem';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 type IProps = {};
 
 const TaskList: FC<IProps> = () => {
-  const { tasks } = useAppSelector((state) => state.task);
+  const { tasks, edittedTaskId } = useAppSelector((state) => state.task);
   const dispatch = useAppDispatch();
+  const ref = useRef<HTMLInputElement>(null);
 
   const activeTask = useMemo<ITask | null>(() => {
     return taskService.getActiveTask(tasks);
@@ -30,6 +31,12 @@ const TaskList: FC<IProps> = () => {
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (edittedTaskId && ref.current) {
+      ref.current.focus();
+    }
+  }, [edittedTaskId]);
 
   const summaryTime = useMemo(() => {
     const summary = tasks.reduce((summary, current) => {
@@ -59,27 +66,29 @@ const TaskList: FC<IProps> = () => {
     <DragDropContext onDragEnd={handleDrag}>
       <Droppable droppableId='tasks'>
         {(provided: DroppableProvided) => (
-          <div>
-            <ul
-              className={styles.list}
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
+          <ul
+            className={styles.list}
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            <TransitionGroup component={null}>
               {tasks.map((task, index) => (
-                <Draggable key={task.id} draggableId={task.id} index={index}>
-                  {(provided: DraggableProvided) => (
-                    <TaskItem
-                      activeTask={activeTask}
-                      provided={provided}
-                      task={task}
-                    />
-                  )}
-                </Draggable>
+                <CSSTransition key={task.id} timeout={500} classNames='item'>
+                  <Draggable key={task.id} draggableId={task.id} index={index}>
+                    {(provided: DraggableProvided) => (
+                      <TaskItem
+                        activeTask={activeTask}
+                        provided={provided}
+                        task={task}
+                      />
+                    )}
+                  </Draggable>
+                </CSSTransition>
               ))}
-              {provided.placeholder}
-              <li className={styles.item}>{summaryTime} минут</li>
-            </ul>
-          </div>
+            </TransitionGroup>
+            {provided.placeholder}
+            <li className={styles.item}>{summaryTime} минут</li>
+          </ul>
         )}
       </Droppable>
     </DragDropContext>
