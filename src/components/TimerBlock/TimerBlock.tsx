@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useState } from 'react';
+import React, { FC, useMemo } from 'react';
 import { TimerButtons } from '../TimerButtons';
 import { TimerHeader } from '../TimerHeader';
 import styles from './timerBlock.module.scss';
@@ -13,7 +13,6 @@ type IProps = {};
 const TimerBlock: FC<IProps> = () => {
   const { tasks } = useAppSelector((state) => state.task);
   const { stage, status, value } = useAppSelector((state) => state.timer);
-  const [visible, setVisible] = useState(true);
 
   const activeTask = useMemo(() => {
     return taskService.getActiveTask(tasks);

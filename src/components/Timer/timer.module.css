@@ -3,7 +3,8 @@
   font-weight: 200;
   font-size: 150px;
   line-height: 179px;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .description {
@@ -13,11 +14,13 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 17px;
-  color: #999999;
+  color: var(--input-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .task {
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .enter {

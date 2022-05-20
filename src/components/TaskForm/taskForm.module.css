@@ -12,8 +12,10 @@
   font-weight: 300;
   font-size: 16px;
   line-height: 17px;
-  color: #999999;
-  background: #f4f4f4;
+  color: var(--input-color);
+  background-color: var(--input_background-color);
+  transition-property: color, background-color;
+  transition-duration: var(--theme-transition-duration);
   border: none;
 }
 
@@ -29,7 +31,8 @@
   font-size: 16px;
   line-height: 17px;
   color: #ffffff;
-  background: #a8b64f;
+  background-color: var(--green);
+  transition: background-color var(--theme-transition-duration);
   border: none;
 }
 
@@ -39,5 +42,6 @@
 
 .error {
   margin-bottom: 25px;
-  color: red;
+  color: var(--red);
+  transition: color var(--theme-transition-duration);
 }

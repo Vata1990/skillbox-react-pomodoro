@@ -69,9 +69,44 @@
   box-sizing: border-box;
   font-family: 'SF UI Display';
 }
+:root {
+  --theme-transition-duration: 500ms;
+}
+
+html[data-theme='light'] {
+  --background-color: #fff;
+  --header-background-color: #fff;
+  --text-color: #333;
+  --input-color: #999999;
+  --input_background-color: #f4f4f4;
+  --block-background-color: #f4f4f4;
+  --block-header-bg-color: #c4c4c4;
+  --block-header-color: #fff;
+  --outline-button-bg-color: rgb(239, 239, 239);
+  --green: #a8b64f;
+  --red: #dc3e22;
+}
+
+html[data-theme='dark'] {
+  --background-color: #111;
+  --header-background-color: #333;
+  --text-color: #999;
+  --input-color: #777;
+  --input_background-color: #232323;
+  --block-background-color: #232323;
+  --block-header-color: #999;
+  --block-header-bg-color: #555;
+  --outline-button-bg-color: rgb(59, 59, 59);
+  --green: #444e09;
+  --red: #9b2f1c;
+}
 
 body {
   font-family: 'SF UI Display';
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color, color;
+  transition-duration: var(--theme-transition-duration);
 }
 
 a {

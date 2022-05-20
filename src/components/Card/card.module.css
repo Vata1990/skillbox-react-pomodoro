@@ -20,7 +20,8 @@
 }
 
 .grey {
-  background-color: #f4f4f4;
+  background-color: var(--block-background-color);
+  transition: background-color var(--theme-transition-duration);
 }
 
 .title {
@@ -28,14 +29,16 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .value {
   font-weight: 400;
   font-size: 64px;
   line-height: 76px;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .icon {

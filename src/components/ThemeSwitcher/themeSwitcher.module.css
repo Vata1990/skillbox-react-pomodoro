@@ -1,0 +1,24 @@
+.btn {
+  padding: 10px;
+  border-color: rgba(118, 118, 118, 0.3);
+  color: var(--text-color);
+  transition-property: color, background-color;
+  transition-duration: var(--theme-transition-duration);
+}
+
+.btn:disabled {
+  background-color: var(--block-header-bg-color);
+  cursor: not-allowed;
+}
+
+.btn:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+}
+
+.btn:last-child {
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

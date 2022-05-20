@@ -37,12 +37,14 @@
 
   border: 1px solid #e4e4e4;
   border-radius: 100%;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .task {
   margin-right: auto;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 .input {
   margin-right: auto;

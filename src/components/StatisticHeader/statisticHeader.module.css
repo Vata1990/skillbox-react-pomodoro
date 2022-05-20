@@ -9,7 +9,8 @@
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }
 
 .selectContainer {
@@ -27,8 +28,10 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 17px;
-  color: #333333;
-  background-color: #f4f4f4;
+  color: var(--text-color);
+  background-color: var(--input_background-color);
+  transition-property: color, background-color;
+  transition-duration: var(--theme-transition-duration);
   cursor: pointer;
 }
 
@@ -60,5 +63,6 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 17px;
-  color: #333333;
+  color: var(--text-color);
+  transition: color var(--theme-transition-duration);
 }

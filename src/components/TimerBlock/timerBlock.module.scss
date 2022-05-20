@@ -1,6 +1,7 @@
 .body {
   padding: 100px;
-  background: #f4f4f4;
+  background-color: var(--block-background-color);
+  transition: background-color var(--theme-transition-duration);
 
   @media (max-width: 1200px) {
     padding: 50px;

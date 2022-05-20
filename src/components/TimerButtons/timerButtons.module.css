@@ -11,7 +11,9 @@
   font-size: 16px;
   line-height: 17px;
   color: #ffffff;
-  background: #a8b64f;
+  background: var(--green);
+  transition-property: background-color;
+  transition-duration: var(--theme-transition-duration);
   border: none;
 }
 
@@ -26,13 +28,17 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 17px;
-  color: #dc3e22;
-  border: 2px solid #dc3e22;
+  color: var(--red);
+  border: 2px solid var(--red);
+  background: var(--outline-button-bg-color);
+  transition-property: background-color, color, border-color;
+  transition-duration: var(--theme-transition-duration);
 }
 
 .outline:hover {
   color: #ffffff;
-  background-color: #dc3e22;
+  background-color: var(--red);
+  transition: color var(--theme-transition-duration);
 }
 
 .outline:disabled {
