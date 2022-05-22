@@ -29,3 +29,11 @@
   color: var(--red);
   transition: color var(--theme-transition-duration);
 }
+
+@media (max-width: 992px) {
+  .container {
+    height: 100%;
+    margin-right: 32px;
+    flex-basis: 50%;
+  }
+}

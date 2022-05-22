@@ -38,7 +38,8 @@
 .outline:hover {
   color: #ffffff;
   background-color: var(--red);
-  transition: color var(--theme-transition-duration);
+  transition-property: color, background-color;
+  transition-duration: var(--theme-transition-duration);
 }
 
 .outline:disabled {

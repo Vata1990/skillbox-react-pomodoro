@@ -6,6 +6,7 @@ type IProps = {
   flexBasis?: string;
   flexGrow?: number;
   marginRight?: string;
+  className?: string;
 };
 
 export const Col: FC<IProps> = ({
@@ -13,11 +14,12 @@ export const Col: FC<IProps> = ({
   flexBasis,
   flexGrow,
   marginRight,
+  className,
 }) => {
   return (
     <div
-      className={styles.col}
-      style={{ flexBasis: flexBasis, flexGrow, marginRight }}
+      className={[styles.col, className ? className : ''].join(' ')}
+      style={{ flexBasis, flexGrow, marginRight }}
     >
       {children}
     </div>

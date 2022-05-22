@@ -23,7 +23,11 @@ const StatisticDiagram: FC<IProps> = ({ data, setActiveBar }) => {
     setActiveBar && setActiveBar(index);
   };
   return (
-    <ResponsiveContainer className={styles.container}>
+    <ResponsiveContainer
+      width='100%'
+      height='100%'
+      className={styles.container}
+    >
       <BarChart
         width={ref.current?.getBoundingClientRect().width}
         height={ref.current?.getBoundingClientRect().height}

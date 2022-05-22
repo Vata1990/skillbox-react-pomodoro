@@ -2,6 +2,7 @@ import { addWorkTime, addPause, addTomatos, addStop } from './statisticSlice';
 import { AppDispatch, AppThunk } from './store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { increaseDone } from './taskSlice';
+import notificationService from '../services/notification-service';
 
 export enum TimerStatus {
   STARTED = 'STARTED',
@@ -17,8 +18,8 @@ export interface ITimerState {
   stage: TimerStage;
 }
 
-export const defaultWorkTime: number = 2;
-export const defaultPauseTime: number = 2;
+export const defaultWorkTime: number = 5;
+export const defaultPauseTime: number = 5;
 
 const initialState: ITimerState = {
   value: defaultWorkTime,
@@ -111,12 +112,20 @@ export const tick =
         dispatch(setTimer(defaultPauseTime));
         dispatch(setStage('pause'));
         dispatch(setStatus(TimerStatus.STARTED));
+        notificationService.createNotification(
+          'Ваше время истекло',
+          'Время работы окончено, вам нужно отдохнуть'
+        );
       } else {
         dispatch(increaseDone(activeTaskId));
         dispatch(setTimer(defaultWorkTime));
         dispatch(setStage('idle'));
         // add to statistic
         dispatch(addTomatos());
+        notificationService.createNotification(
+          'Ваше время истекло',
+          'Время перерыва окончено, возвращайтесь к работе'
+        );
       }
     }
   };

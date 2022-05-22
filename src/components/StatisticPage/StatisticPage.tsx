@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux-hooks';
 import { fetchStatistic } from '../../store/statisticSlice';
 import statisticService from '../../services/statistic-service';
 import { WorkMinStatistic } from '../WorkMinStatistic';
+import styles from './statisticPage.module.css';
 
 export const StatisticPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -34,23 +35,23 @@ export const StatisticPage: React.FC = () => {
 
   return (
     <div>
-      <Row marginBottom='32px'>
+      <Row className={styles.headerRow}>
         <StatisticHeader setWeekNumber={setWeekNumber} />
       </Row>
-      <Row marginBottom='32px'>
-        <Col flexGrow={0} marginRight='32px'>
+      <Row className={styles.diagramRow}>
+        <Col flexGrow={0} className={styles.summary}>
           <WorkMinStatistic weekStatistic={activeStatistic} />
           <PomodoroStat weekStatistic={activeStatistic} />
         </Col>
-        <Col>
+        <Col className={styles.diagram}>
           <StatisticDiagram
             data={weekStatistic}
             setActiveBar={setActiveStatisticIndex}
           />
         </Col>
       </Row>
-      <Row>
-        <Col marginRight='32px'>
+      <Row className={styles.dataRow}>
+        <Col className={styles.data}>
           <Card
             title='Фокус'
             value={`${
@@ -66,7 +67,7 @@ export const StatisticPage: React.FC = () => {
             icon={<FocusIcon />}
           />
         </Col>
-        <Col marginRight='32px'>
+        <Col className={styles.data}>
           <Card
             title='Время на паузе'
             value={`${activeStatistic.dayStatistic?.pauseTime ?? 0}м`}
@@ -74,7 +75,7 @@ export const StatisticPage: React.FC = () => {
             icon={<PauseIcon />}
           />
         </Col>
-        <Col>
+        <Col className={styles.data}>
           <Card
             title='Остановки'
             value={`${activeStatistic.dayStatistic?.stops ?? 0}`}

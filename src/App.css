@@ -98,7 +98,7 @@ html[data-theme='dark'] {
   --block-header-bg-color: #555;
   --outline-button-bg-color: rgb(59, 59, 59);
   --green: #444e09;
-  --red: #9b2f1c;
+  --red: #fff;
 }
 
 body {

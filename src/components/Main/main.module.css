@@ -2,3 +2,9 @@
   padding-top: 100px;
   height: calc(100vh - 70px);
 }
+
+@media (max-width: 1200px) {
+  .main {
+    padding-top: 50px;
+  }
+}

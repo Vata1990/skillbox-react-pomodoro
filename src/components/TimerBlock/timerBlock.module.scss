@@ -2,42 +2,25 @@
   padding: 100px;
   background-color: var(--block-background-color);
   transition: background-color var(--theme-transition-duration);
+  overflow: hidden;
+  animation: appear 1s forwards;
 
   @media (max-width: 1200px) {
     padding: 50px;
   }
+
+  @media (max-width: 576px) {
+    padding: 25px;
+  }
 }
 
-.enter {
-  animation: enter 1s;
-}
-@keyframes enter {
+@keyframes appear {
   from {
-    opacity: 0;
-    transform: scale(0);
-    height: 0;
+    max-height: 0px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   to {
-    opacity: 1;
-    transform: scale(1);
-    height: 250px;
-  }
-}
-
-.exit {
-  animation: exit 1s;
-}
-
-@keyframes exit {
-  from {
-    opacity: 1;
-    transform: scale(1);
-
-    height: 250px;
-  }
-  to {
-    opacity: 0;
-    transform: scale(0);
-    height: 0;
+    max-height: 500px;
   }
 }

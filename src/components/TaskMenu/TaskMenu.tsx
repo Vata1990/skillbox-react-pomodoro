@@ -37,28 +37,23 @@ const TaskMenu: FC<IProps> = ({ taskId }) => {
       <button onClick={handleClick} className={styles.button}>
         <MenuIcon />
       </button>
-      {showModal && (
-        <Modal onModalClose={() => setShowModal(false)}>
-          <div className={styles.confirmation}>
-            <h3 className={styles.header}>Удалить задачу?</h3>
-            <button
-              className={styles.delete}
-              onClick={() => {
-                dispatch(deleteTask(taskId));
-                setShowModal(false);
-              }}
-            >
-              Удалить
-            </button>
-            <button
-              className={styles.cancel}
-              onClick={() => setShowModal(false)}
-            >
-              Отмена
-            </button>
-          </div>
-        </Modal>
-      )}
+      <Modal showModal={showModal} onModalClose={() => setShowModal(false)}>
+        <div className={styles.confirmation}>
+          <h3 className={styles.header}>Удалить задачу?</h3>
+          <button
+            className={styles.delete}
+            onClick={() => {
+              dispatch(deleteTask(taskId));
+              setShowModal(false);
+            }}
+          >
+            Удалить
+          </button>
+          <button className={styles.cancel} onClick={() => setShowModal(false)}>
+            Отмена
+          </button>
+        </div>
+      </Modal>
       {isOpen &&
         createPortal(
           <MenuList

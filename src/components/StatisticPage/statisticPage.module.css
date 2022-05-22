@@ -1,0 +1,55 @@
+.headerRow {
+  margin-bottom: 32px;
+}
+
+.diagramRow {
+  margin-bottom: 32px;
+}
+
+.diagram {
+  min-height: 400px;
+}
+
+.summary {
+  margin-right: 32px;
+}
+
+.data {
+  margin-right: 32px;
+}
+
+.data:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 992px) {
+  .diagramRow {
+    flex-wrap: wrap;
+  }
+
+  .summary {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 0;
+    margin-bottom: 32px;
+  }
+
+  .diagram {
+    flex-basis: 100%;
+  }
+  .dataRow {
+    flex-wrap: wrap;
+  }
+
+  .data {
+    flex-basis: 100%;
+    margin-right: 0;
+    margin-bottom: 32px;
+  }
+
+  .data:last-child {
+    margin-bottom: 0;
+  }
+}

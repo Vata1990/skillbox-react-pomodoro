@@ -24,9 +24,10 @@ const TimerBlock: FC<IProps> = () => {
       <div className={styles.body}>
         <CSSTransition
           in={!!activeTask}
-          timeout={1000}
+          timeout={500}
           classNames={{ ...styles }}
           unmountOnExit
+          mountOnEnter
         >
           <div>
             <Timer

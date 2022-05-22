@@ -1,0 +1,15 @@
+@media (max-width: 992px) {
+  .right {
+    flex-basis: 100%;
+    margin-bottom: 30px;
+  }
+
+  .left {
+    flex-basis: 100%;
+    order: 1;
+  }
+
+  .task {
+    flex-wrap: wrap;
+  }
+}

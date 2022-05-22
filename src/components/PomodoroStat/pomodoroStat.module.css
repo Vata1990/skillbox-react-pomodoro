@@ -40,3 +40,10 @@
   background-color: var(--red);
   transition: background-color var(--theme-transition-duration);
 }
+
+@media (max-width: 992px) {
+  .container {
+    flex-basis: 50%;
+    height: 100%;
+  }
+}

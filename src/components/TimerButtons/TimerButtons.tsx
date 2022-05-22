@@ -147,6 +147,7 @@ const StopButton: FC = () => {
 
 const StartButton: FC = () => {
   const dispatch = useAppDispatch();
+
   function handleStart(event: MouseEvent<HTMLButtonElement>): void {
     dispatch(start());
   }
