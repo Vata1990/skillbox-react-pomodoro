@@ -7,12 +7,13 @@
 
 .container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   height: 100%;
 }
 
 .logo {
+  margin-right: auto;
   display: flex;
   align-items: center;
 }
@@ -36,6 +37,7 @@
 }
 
 .stats {
+  margin-right: 32px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -60,3 +62,7 @@
 .stats:hover path {
   fill: #b7280f;
 }
+
+/* .theme {
+  margin-right: 32px;
+} */

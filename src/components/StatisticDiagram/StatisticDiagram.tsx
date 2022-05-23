@@ -21,11 +21,9 @@ const StatisticDiagram: FC<IProps> = ({ data, setActiveBar }) => {
 
   const clickHandler = (_: any, index: number): void => {
     setActiveBar && setActiveBar(index);
-  };
+};
   return (
     <ResponsiveContainer
-      width='100%'
-      height='100%'
       className={styles.container}
     >
       <BarChart

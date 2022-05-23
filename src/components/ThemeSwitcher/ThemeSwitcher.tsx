@@ -2,13 +2,15 @@ import React, { FC } from 'react';
 import { useTheme } from '../../hooks/useTheme';
 import styles from './themeSwitcher.module.css';
 
-type IProps = {};
+type IProps = {
+  className?: string;
+};
 
-const ThemeSwitcher: FC<IProps> = () => {
+const ThemeSwitcher: FC<IProps> = ({ className }) => {
   const [theme, setTheme] = useTheme();
 
   return (
-    <div className={styles.container}>
+    <div className={[styles.container, className ? className : ''].join(' ')}>
       <button
         className={styles.btn}
         onClick={() => setTheme('dark')}
